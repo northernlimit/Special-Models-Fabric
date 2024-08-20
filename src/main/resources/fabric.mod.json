@@ -30,5 +30,10 @@
 		"java": ">=17",
 		"fabric-api": "*"
 	},
-	"accessWidener": "specialmodels.accesswidener"
+	"accessWidener": "specialmodels.accesswidener",
+	"custom": {
+		"modmenu": {
+			"badges": [ "library" ]
+		}
+	}
 }
