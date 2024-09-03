@@ -1,6 +1,7 @@
 package net.ludocrypt.specialmodels.impl;
 
 import com.google.common.collect.Maps;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
@@ -12,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-public class SpecialModels implements ModInitializer {
+public class SpecialModels implements ClientModInitializer {
 
 	public static final Logger LOGGER = LoggerFactory.getLogger("Special-Models");
 
@@ -20,7 +21,7 @@ public class SpecialModels implements ModInitializer {
 	public static final Map<SpecialModelRenderer, ShaderProgram> LOADED_SHADERS = Maps.newHashMap();
 
 	@Override
-	public void onInitialize() {
+	public void onInitializeClient() {
 		TexturedSpecialModelRenderer.init();
 	}
 }

@@ -17,7 +17,7 @@
 	"icon": "assets/specialmodels/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
+		"client": [
 			"net.ludocrypt.specialmodels.impl.SpecialModels"
 		]
 	},
