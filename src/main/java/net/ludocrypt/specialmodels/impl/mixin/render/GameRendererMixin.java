@@ -25,7 +25,7 @@ import java.util.function.Consumer;
 @Mixin(GameRenderer.class)
 public class GameRendererMixin {
 
-	@Inject(method = "loadPrograms", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z", ordinal = 58, shift = Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
+	@Inject(method = "loadPrograms", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z", ordinal = 57, shift = Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
 	private void specialModels$loadShaders(ResourceFactory manager, CallbackInfo ci, List<ShaderStage> list,
 			List<Pair<ShaderProgram, Consumer<ShaderProgram>>> list2) {
 		SpecialModels.LOADED_SHADERS.clear();

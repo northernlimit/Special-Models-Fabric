@@ -4,7 +4,6 @@ import com.google.common.collect.Maps;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.api.ModInitializer;
 import net.ludocrypt.specialmodels.api.SpecialModelRenderer;
 import net.ludocrypt.specialmodels.api.TexturedSpecialModelRenderer;
 import net.minecraft.client.gl.ShaderProgram;

@@ -24,10 +24,11 @@ public abstract class WorldRendererAfterMixin implements WorldRendererAccess, Wo
 	@Shadow
 	private Frustum frustum;
 
-	@Inject(method = "Lnet/minecraft/client/render/WorldRenderer;render(Lnet/minecraft/client/util/math/MatrixStack;FJZLnet/minecraft/client/render/Camera;Lnet/minecraft/client/render/GameRenderer;Lnet/minecraft/client/render/LightmapTextureManager;Lorg/joml/Matrix4f;)V", at = @At(value = "RETURN", shift = At.Shift.BEFORE))
-	private void specialModels$render$clear(MatrixStack matrices, float tickDelta, long limitTime,
-			boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer,
-			LightmapTextureManager lightmapTextureManager, Matrix4f positionMatrix, CallbackInfo ci) {
+	@Inject(method = "render", at = @At(value = "RETURN", shift = At.Shift.BEFORE))
+	private void specialModels$render$clear(float tickDelta, long limitTime,
+											boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer,
+											LightmapTextureManager lightmapTextureManager,
+											Matrix4f matrix4f, Matrix4f positionMatrix, CallbackInfo ci) {
 
 		if (IrisBridge.IRIS_LOADED) {
 
@@ -35,7 +36,9 @@ public abstract class WorldRendererAfterMixin implements WorldRendererAccess, Wo
 
 				this.setupSpecialTerrain(camera, this.frustum, false, this.client.player.isSpectator());
 				this.findSpecialChunksToRebuild(camera);
-				this.render(matrices, positionMatrix, tickDelta, camera, true);
+				MatrixStack matrixStack = new MatrixStack();
+				matrixStack.multiplyPositionMatrix(matrix4f);
+				this.render(matrixStack, positionMatrix, tickDelta, camera, true);
 			}
 
 		}

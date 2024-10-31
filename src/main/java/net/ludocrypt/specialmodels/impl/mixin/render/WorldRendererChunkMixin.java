@@ -97,7 +97,7 @@ public class WorldRendererChunkMixin implements WorldChunkBuilderAccess {
 		this.setWorldSpecial(world);
 	}
 
-	@Inject(method = "Lnet/minecraft/client/render/WorldRenderer;reload()V", at = @At("HEAD"))
+	@Inject(method = "reload()V", at = @At("HEAD"))
 	private void specialModels$reload(CallbackInfo ci) {
 		this.reloadSpecial();
 	}
@@ -218,7 +218,7 @@ public class WorldRendererChunkMixin implements WorldChunkBuilderAccess {
 
 			if (this.specialChunkBuilder == null) {
 				this.specialChunkBuilder = new SpecialChunkBuilder(this.world, ((WorldRenderer) (Object) this),
-					Util.getMainWorkerExecutor(), this.client.is64Bit(), this.specialBufferBuilderStorage);
+					Util.getMainWorkerExecutor(), true, this.specialBufferBuilderStorage);
 			} else {
 				this.specialChunkBuilder.setWorld(this.world);
 			}
